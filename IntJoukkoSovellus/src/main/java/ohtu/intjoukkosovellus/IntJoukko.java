@@ -32,20 +32,24 @@ public class IntJoukko {
     }
 
     public IntJoukko(int kapasiteetti, int kasvatuskoko) {
-        if (kapasiteetti < 0) {
-            throw new IndexOutOfBoundsException("Kapasitteetti väärin");//heitin vaan jotain :D
-        }
-        if (kasvatuskoko < 0) {
-            throw new IndexOutOfBoundsException("kapasiteetti2");//heitin vaan jotain :D
-        }
+        tarkastaJoukonKoko(kapasiteetti, kasvatuskoko);
         ljono = new int[kapasiteetti];
         for (int i = 0; i < ljono.length; i++) {
             ljono[i] = 0;
         }
         alkioidenLkm = 0;
         this.kasvatuskoko = kasvatuskoko;
-
     }
+    
+    public void tarkastaJoukonKoko(int kapasiteetti, int kasvatuskoko) {
+        if (kapasiteetti < 0) {
+            throw new IndexOutOfBoundsException("Kapasitteetti väärin");//heitin vaan jotain :D
+        }
+        if (kasvatuskoko < 0) {
+            throw new IndexOutOfBoundsException("kapasiteetti2");//heitin vaan jotain :D
+        }
+    }
+    
 
     public boolean lisaa(int luku) {
 
@@ -92,7 +96,6 @@ public class IntJoukko {
 
     public boolean poista(int luku) {  
         int loydettyAlkio = etsiPoistettavaAlkio(luku);
-        
         return korjaaTaulukkoPoistetunAlkionKohdalta(loydettyAlkio);
     }
     
